@@ -1,0 +1,13 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ro.ubbcluj.rentauto.controller.car.CarAddController" alignment="center">
+
+    <Spinner fx:id="id" initialValue="0" editable="true" min="0" max="2000000000"/>
+    <TextField fx:id="model" promptText="MODEL"/>
+    <TextField fx:id="kilometers" promptText="KILOMETERS"/>
+    <TextField fx:id="pricePerDay" promptText="PRICE/DAY"/>
+
+    <Button text="Add" fx:id="btnAdd"/>
+    <Button text="Cancel" fx:id="btnCancel"/>
+</VBox>
