@@ -2,7 +2,6 @@ package ro.ubbcluj.rentauto.repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ro.ubbcluj.rentauto.model.Car;
-import ro.ubbcluj.rentauto.service.CarServiceImpl;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,11 +34,5 @@ public class CarRepositoryImpl implements Repository<Car, Long> {
     @Override
     public List<Car> findAll() {
         return new ArrayList<>(CARS.values());
-    }
-
-    public static void main(String[] args) {
-        CarServiceImpl carService = new CarServiceImpl(new CarRepositoryImpl());
-        final var allCarsByRentTime = carService.getAllCarsByRentTime();
-        System.out.println(allCarsByRentTime);
     }
 }
