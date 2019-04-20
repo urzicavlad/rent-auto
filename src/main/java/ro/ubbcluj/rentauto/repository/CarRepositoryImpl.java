@@ -2,29 +2,26 @@ package ro.ubbcluj.rentauto.repository;
 
 import ro.ubbcluj.rentauto.model.Car;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class CarRepositoryImpl implements Repository<Car, Long> {
 
-    private static Map<Integer, Car> CARS = new HashMap<>();
+    private static Map<Long, Car> CARS = new HashMap<>();
 
 
     @Override
-    public Car save(Car object) {
-        return null;
+    public Car save(Car car) {
+        return CARS.put(car.getId(), car);
     }
 
     @Override
-    public Optional<Car> findById(Long aLong) {
-        return null;
+    public Optional<Car> findById(Long id) {
+        return Optional.ofNullable(CARS.get(id));
     }
 
     @Override
     public List<Car> findAll() {
-        return null;
+        return new ArrayList<>(CARS.values());
     }
 
 }

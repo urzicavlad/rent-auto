@@ -74,4 +74,18 @@ public class CarServiceImplTest {
         assertThat(output.toArray(), not(equalTo(input.toArray())));
         verify(repository, times(1)).findAll();
     }
+
+    @Test
+    public void getById() {
+        when(repository.findById(anyLong())).thenReturn(Optional.of(new Car()));
+        assertNotNull(carService.getById(1L));
+        verify(repository, times(1)).findById(anyLong());
+    }
+
+    @Test(expected = CarNotFoundException.class)
+    public void getById_shouldThrowCarNotFoundException() {
+        when(repository.findById(anyLong())).thenReturn(Optional.empty());
+        assertNotNull(carService.getById(1L));
+        verify(repository, times(1)).findById(anyLong());
+    }
 }

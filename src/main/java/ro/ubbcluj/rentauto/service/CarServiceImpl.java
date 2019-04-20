@@ -35,4 +35,10 @@ public class CarServiceImpl implements CarService {
                 .sorted(Comparator.comparing(Car::getRentTimes).reversed())
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Car getById(Long carId) {
+        return carRepository.findById(carId)
+                .orElseThrow(() -> new CarNotFoundException("Car was not found!"));
+    }
 }

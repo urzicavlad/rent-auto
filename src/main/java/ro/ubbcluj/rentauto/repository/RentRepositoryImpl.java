@@ -2,28 +2,25 @@ package ro.ubbcluj.rentauto.repository;
 
 import ro.ubbcluj.rentauto.model.Rent;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class RentRepositoryImpl implements Repository<Rent, Long> {
 
-    private static Map<Integer, Rent> RENTS = new HashMap<>();
+    private static Map<Long, Rent> RENTS = new HashMap<>();
 
 
     @Override
-    public Rent save(Rent object) {
-        return null;
+    public Rent save(Rent rent) {
+        return RENTS.put(rent.getId(), rent);
     }
 
     @Override
-    public Optional<Rent> findById(Long aLong) {
-        return null;
+    public Optional<Rent> findById(Long rentId) {
+        return Optional.ofNullable(RENTS.get(rentId));
     }
 
     @Override
     public List<Rent> findAll() {
-        return null;
+        return new ArrayList<>(RENTS.values());
     }
 }

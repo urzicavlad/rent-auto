@@ -6,5 +6,5 @@ public interface RentService {
 
     Rent add(Rent rent);
 
-    Long getIncome(Long carId);
+    Double getIncome(Long carId);
 }

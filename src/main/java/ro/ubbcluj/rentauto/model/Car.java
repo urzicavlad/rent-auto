@@ -12,6 +12,6 @@ public class Car {
     private Long id;
     private String model;
     private Long kilometers;
-    private Integer pricePerDay;
+    private Double pricePerDay;
     private Integer rentTimes;
 }

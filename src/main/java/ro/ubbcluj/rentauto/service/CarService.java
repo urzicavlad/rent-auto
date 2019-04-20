@@ -11,4 +11,6 @@ public interface CarService {
     Long getKilometers(Long carId);
 
     List<Car> getAllCarsByRentTime();
+
+    Car getById(Long carId);
 }
