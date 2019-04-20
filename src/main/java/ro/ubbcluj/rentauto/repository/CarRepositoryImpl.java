@@ -1,25 +1,12 @@
 package ro.ubbcluj.rentauto.repository;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import ro.ubbcluj.rentauto.model.Car;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.*;
 
 public class CarRepositoryImpl implements Repository<Car, Long> {
 
     private static Map<Long, Car> CARS = new HashMap<>();
-
-    static {
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            final Car[] cars = objectMapper.readValue(new File("json-files/cars.json"), Car[].class);
-            Arrays.asList(cars).forEach(car -> CARS.put(car.getId(), car));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public Car save(Car car) {
