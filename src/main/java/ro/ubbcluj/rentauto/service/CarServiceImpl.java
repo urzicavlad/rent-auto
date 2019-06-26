@@ -41,4 +41,9 @@ public class CarServiceImpl implements CarService {
         return carRepository.findById(carId)
                 .orElseThrow(() -> new CarNotFoundException("Car was not found!"));
     }
+
+    @Override
+    public void delete(Car car) {
+        carRepository.remove(car);
+    }
 }

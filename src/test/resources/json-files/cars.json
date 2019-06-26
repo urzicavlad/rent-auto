@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "model": "Audi",
+    "kilometers": 10000,
+    "pricePerDay": 100.0,
+    "rentTimes": 1
+  },
+  {
+    "id": 2,
+    "model": "VW",
+    "kilometers": 2000,
+    "pricePerDay": 110.0,
+    "rentTimes": 2
+  },
+  {
+    "id": 1,
+    "model": "Alfa Romeo",
+    "kilometers": 103000,
+    "pricePerDay": 1100.0,
+    "rentTimes": 4
+  },
+  {
+    "id": 1,
+    "model": "BMW",
+    "kilometers": 90000,
+    "pricePerDay": 1300.0,
+    "rentTimes": 10
+  },
+  {
+    "id": 1,
+    "model": "Skoda",
+    "kilometers": 103000,
+    "pricePerDay": 1030.0,
+    "rentTimes": 122
+  }
+]

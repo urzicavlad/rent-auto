@@ -13,5 +13,5 @@ public class Car {
     private String model;
     private Long kilometers;
     private Double pricePerDay;
-    private Integer rentTimes;
+    private Integer rentTimes = 0;
 }

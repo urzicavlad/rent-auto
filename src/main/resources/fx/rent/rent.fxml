@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.VBox?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             xmlns="http://javafx.com/javafx"
-            fx:controller="ro.ubbcluj.rentauto.controller.RentController"
-            prefHeight="400.0" prefWidth="600.0">
+            fx:controller="ro.ubbcluj.rentauto.controller.RentController">
 
     <VBox>
         <Label text="Rents:"/>

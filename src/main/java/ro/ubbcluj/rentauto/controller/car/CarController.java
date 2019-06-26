@@ -3,42 +3,46 @@ package ro.ubbcluj.rentauto.controller.car;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
+import javafx.util.converter.DoubleStringConverter;
+import ro.ubbcluj.rentauto.controller.common.AlertController;
 import ro.ubbcluj.rentauto.model.Car;
 import ro.ubbcluj.rentauto.service.CarService;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 
-@Getter
-@Slf4j
+import static java.util.Objects.nonNull;
+
+
 public class CarController {
 
-    private TableView tableViewCars;
-    private TableColumn tableColumnId;
-    private TableColumn tableColumnModel;
-    private TableColumn tableColumnKilometers;
-    private TableColumn tableColumnPricePerDay;
-    private TableColumn tableColumnRentTimes;
-    private Button btnDeleteCar;
-    private Button btnAddCar;
+
+    public TableView<Car> tableViewCars;
+    public TableColumn<String, Long> tableColumnId;
+    public TableColumn<String, String> tableColumnModel;
+    public TableColumn<String, Long> tableColumnKilometers;
+    public TableColumn<String, Double> tableColumnPricePerDay;
+    public TableColumn<String, Integer> tableColumnRentTimes;
+    public Button btnDeleteCar;
+    public Button btnAddCar;
 
     private CarService carService;
-
     private ObservableList<Car> cars = FXCollections.observableArrayList();
 
-
+    @FXML
     private void initialize() {
         Platform.runLater(() -> {
-            final var allCarsByRentTime = carService.getAllCarsByRentTime();
+            tableColumnPricePerDay.setCellFactory(
+                    TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+            cars.addAll(carService.getAllCarsByRentTime());
             tableViewCars.setItems(cars);
         });
     }
@@ -47,12 +51,12 @@ public class CarController {
         this.carService = carService;
     }
 
-    public void btnCarAddClick(ActionEvent actionEvent) {
+    public void addOnClick() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("fx/car/car-add.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/fx/car/car-add.fxml"));
 
-            Scene scene = new Scene(fxmlLoader.load(), 600, 200);
+            Scene scene = new Scene(fxmlLoader.load(), 600, 300);
             Stage stage = new Stage();
 
             stage.setTitle("Car add");
@@ -63,9 +67,23 @@ public class CarController {
             stage.showAndWait();
             cars.clear();
             cars.addAll(carService.getAllCarsByRentTime());
-
         } catch (IOException e) {
-            log.info("error");
+            AlertController.showError("Error occured!", e.getCause().getMessage(), e.getMessage());
+            System.out.println("Exception occurred: {}" + e.getMessage());
+        }
+    }
+
+    public void deleteOnClick() {
+        Car car = tableViewCars.getSelectionModel().getSelectedItem();
+        if (nonNull(car)) {
+            try {
+                carService.delete(car);
+                cars.clear();
+                cars.addAll(carService.getAllCarsByRentTime());
+            } catch (RuntimeException rex) {
+                System.out.println("Exception occurred: {}" + rex.getMessage());
+                AlertController.showError("Error occured!", rex.getCause().getMessage(), rex.getMessage());
+            }
         }
     }
 }

@@ -1,16 +1,16 @@
 package ro.ubbcluj.rentauto.controller.car;
 
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import lombok.extern.slf4j.Slf4j;
+import lombok.Getter;
+import ro.ubbcluj.rentauto.controller.common.AlertController;
 import ro.ubbcluj.rentauto.model.Car;
 import ro.ubbcluj.rentauto.service.CarService;
 
-import java.awt.event.ActionEvent;
-
-@Slf4j
+@Getter
 public class CarAddController {
 
     public TextField model;
@@ -26,25 +26,23 @@ public class CarAddController {
         this.carService = carService;
     }
 
-    public void btnCancelClick(ActionEvent actionEvent) {
+    public void btnCancelClick() {
         Stage stage = (Stage) btnCancel.getScene().getWindow();
         stage.close();
     }
 
-    public void btnAddClick(ActionEvent actionEvent) {
-
+    public void btnAddClick() {
         try {
             Car car = new Car();
-            car.setId((Long) id.getValue());
             car.setModel(this.model.getText());
             car.setPricePerDay(Double.valueOf(this.pricePerDay.getText()));
             car.setKilometers(Long.valueOf(this.kilometers.getText()));
+            car.setId(Long.valueOf((Integer) id.getValue()));
             carService.add(car);
-
-            btnCancelClick(actionEvent);
+            btnCancelClick();
         } catch (RuntimeException rex) {
-            log.info("problems!");
+            AlertController.showError("Error occured!", this.getClass().toString(), "btnAddClick");
+            System.out.println("Exception occurred: {}" + rex.getMessage());
         }
     }
-
 }

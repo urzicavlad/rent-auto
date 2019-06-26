@@ -13,4 +13,6 @@ public interface CarService {
     List<Car> getAllCarsByRentTime();
 
     Car getById(Long carId);
+
+    void delete(Car car);
 }

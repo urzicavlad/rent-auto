@@ -10,16 +10,16 @@
 
     <VBox>
         <Label text="Cars:"/>
-        <TableView fx:id="getTableViewCars" editable="true">
+        <TableView fx:id="tableViewCars" editable="true">
             <columns>
 
-                <TableColumn fx:id="getTableColumnId" text="ID">
+                <TableColumn fx:id="tableColumnId" text="ID">
                     <cellValueFactory>
                         <PropertyValueFactory property="id"/>
                     </cellValueFactory>
                 </TableColumn>
 
-                <TableColumn fx:id="getTableColumnModel" text="MODEL">
+                <TableColumn fx:id="tableColumnModel" text="MODEL">
                     <cellValueFactory>
                         <PropertyValueFactory property="model"/>
                     </cellValueFactory>
@@ -28,13 +28,13 @@
                     </cellFactory>
                 </TableColumn>
 
-                <TableColumn fx:id="getTableColumnKilometers" text="KILOMETERS">
+                <TableColumn fx:id="tableColumnKilometers" text="KILOMETERS">
                     <cellValueFactory>
                         <PropertyValueFactory property="kilometers"/>
                     </cellValueFactory>
                 </TableColumn>
 
-                <TableColumn fx:id="getTableColumnPricePerDay" text="PRICE/DAY">
+                <TableColumn fx:id="tableColumnPricePerDay" text="PRICE/DAY">
                     <cellValueFactory>
                         <PropertyValueFactory property="pricePerDay"/>
                     </cellValueFactory>
@@ -43,7 +43,7 @@
                     </cellFactory>
                 </TableColumn>
 
-                <TableColumn fx:id="getTableColumnRentTimes" text="RENT-TIMES">
+                <TableColumn fx:id="tableColumnRentTimes" text="RENT-TIMES">
                     <cellValueFactory>
                         <PropertyValueFactory property="rentTimes"/>
                     </cellValueFactory>
@@ -54,8 +54,8 @@
         </TableView>
 
         <HBox alignment="BOTTOM_RIGHT">
-            <Button fx:id="getBtnAddCar" onAction="#getBtnAddCar" text="Add car"/>
-            <Button fx:id="getBtnDeleteCar" text="Delete car"/>
+            <Button fx:id="btnAddCar" onAction="#addOnClick" text="Add car"/>
+            <Button fx:id="btnDeleteCar" onAction="#deleteOnClick" text="Delete car"/>
         </HBox>
 
     </VBox>
