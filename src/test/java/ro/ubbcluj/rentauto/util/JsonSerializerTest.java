@@ -17,7 +17,7 @@ public class JsonSerializerTest {
     public void readData() throws IOException {
         JsonSerializer<Car> carJsonSerializer = new JsonSerializer<>();
         final var cars = carJsonSerializer.readData(
-                new File("src/createStage/resources/json-files/cars.json"), Car[].class);
+                new File("src/test/resources/json-files/cars.json"), Car[].class);
         assertNotNull(cars);
     }
 
@@ -25,8 +25,8 @@ public class JsonSerializerTest {
     public void writeData() throws IOException {
         JsonSerializer<Car> carJsonSerializer = new JsonSerializer<>();
         final var read = carJsonSerializer.readData(
-                new File("src/createStage/resources/json-files/cars.json"), Car[].class);
-        final var resultFile = new File("src/createStage/resources/json-files/createStage.json");
+                new File("src/test/resources/json-files/cars.json"), Car[].class);
+        final var resultFile = new File("src/test/resources/json-files/createStage.json");
         carJsonSerializer.writeData(read, resultFile);
         final var fileIsEmpty = Files.readString(Path.of(resultFile.getPath())).isEmpty();
         assertFalse(fileIsEmpty);

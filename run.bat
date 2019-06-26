@@ -1,0 +1,1 @@
+mvn clean install & java --module-path lib/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml --add-modules javafx.base,javafx.graphics -classpath target/classes ro.ubbcluj.rentauto.App java -jar rent-auto-1.0-SNAPSHOT.jar
