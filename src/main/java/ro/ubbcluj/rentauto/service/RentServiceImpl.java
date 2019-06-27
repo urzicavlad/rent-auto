@@ -3,6 +3,8 @@ package ro.ubbcluj.rentauto.service;
 import ro.ubbcluj.rentauto.model.Rent;
 import ro.ubbcluj.rentauto.repository.Repository;
 
+import java.util.List;
+
 public class RentServiceImpl implements RentService {
 
     private final Repository<Rent, Long> rentRepository;
@@ -31,5 +33,15 @@ public class RentServiceImpl implements RentService {
                 .mapToInt(Rent::getDays)
                 .sum();
         return car.getPricePerDay() * (double) rentDays;
+    }
+
+    @Override
+    public List<Rent> getAll() {
+        return rentRepository.findAll();
+    }
+
+    @Override
+    public void delete(Rent rent) {
+        rentRepository.remove(rent);
     }
 }

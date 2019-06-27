@@ -1,28 +1,29 @@
-package ro.ubbcluj.rentauto.controller.car;
+package ro.ubbcluj.rentauto.controller.rent;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import lombok.Getter;
 import ro.ubbcluj.rentauto.controller.common.AlertController;
 import ro.ubbcluj.rentauto.model.Car;
+import ro.ubbcluj.rentauto.model.Rent;
 import ro.ubbcluj.rentauto.service.CarService;
+import ro.ubbcluj.rentauto.service.RentService;
 
-@Getter
-public class CarAddController {
+public class RentAddController {
 
-    public TextField model;
+
+    public TextField days;
     public TextField kilometers;
-    public TextField pricePerDay;
+    public TextField carId;
     public Button btnAdd;
     public Button btnCancel;
     public Spinner id;
 
-    private CarService carService;
+    private RentService rentService;
 
-    public void setService(CarService carService) {
-        this.carService = carService;
+    public void setService(RentService rentService) {
+        this.rentService = rentService;
     }
 
     public void btnCancelClick() {
@@ -32,12 +33,12 @@ public class CarAddController {
 
     public void btnAddClick() {
         try {
-            Car car = new Car();
-            car.setModel(this.model.getText());
-            car.setPricePerDay(Double.valueOf(this.pricePerDay.getText()));
-            car.setKilometers(Long.valueOf(this.kilometers.getText()));
-            car.setId(Long.valueOf((Integer) id.getValue()));
-            carService.add(car);
+            Rent rent = new Rent();
+            rent.setId(Long.valueOf((Integer) id.getValue()));
+            rent.setCarId(Long.valueOf(carId.getText()));
+            rent.setDays(Integer.valueOf(days.getText()));
+            rent.setKilometers(Integer.valueOf(kilometers.getText()));
+            rentService.add(rent);
             btnCancelClick();
         } catch (RuntimeException rex) {
             AlertController.showError("Error occured!", this.getClass().toString(), "btnAddClick");
