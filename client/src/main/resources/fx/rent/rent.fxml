@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox xmlns:fx="http://javafx.com/fxml/1"
+      alignment="center"
+      xmlns="http://javafx.com/javafx/8.0.172-ea"
+      fx:controller="ro.ubbcluj.client.controller.rent.RentController">
+
+    <VBox>
+        <Label text="Rents:"/>
+
+        <TableView fx:id="tableViewRents" editable="true">
+            <columns>
+                <TableColumn fx:id="tableColumnId" text="ID">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="id"/>
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="tableColumnCar" text="CAR IDENTIFIER">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="carId"/>
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="tableColumnKilometers" text="KILOMETERS">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="kilometers"/>
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="tableColumnDays" text="RENT DAYS">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="days"/>
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+
+        </TableView>
+
+        <HBox alignment="BOTTOM_RIGHT">
+            <Button fx:id="btnAddRent" onAction="#addOnClick" text="Add rent"/>
+            <Button fx:id="btnDeleteRent" onAction="#deleteOnClick" text="Delete rent"/>
+        </HBox>
+
+    </VBox>
+</HBox>

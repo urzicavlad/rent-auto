@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<HBox xmlns:fx="http://javafx.com/fxml/1" alignment="center"
+      xmlns="http://javafx.com/javafx/8.0.172-ea"
+      fx:controller="ro.ubbcluj.client.controller.car.CarController">
+
+    <VBox>
+        <Label text="Cars:"/>
+        <TableView fx:id="tableViewCars" editable="true">
+            <columns>
+
+                <TableColumn fx:id="tableColumnId" text="ID">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="id"/>
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="tableColumnModel" text="MODEL">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="model"/>
+                    </cellValueFactory>
+                    <cellFactory>
+                        <TextFieldTableCell fx:factory="forTableColumn"/>
+                    </cellFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="tableColumnKilometers" text="KILOMETERS">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="kilometers"/>
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="tableColumnPricePerDay" text="PRICE/DAY">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="pricePerDay"/>
+                    </cellValueFactory>
+                    <cellFactory>
+                        <TextFieldTableCell fx:factory="forTableColumn"/>
+                    </cellFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="tableColumnRentTimes" text="RENT-TIMES">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="rentTimes"/>
+                    </cellValueFactory>
+                </TableColumn>
+
+            </columns>
+
+        </TableView>
+
+        <HBox alignment="BOTTOM_RIGHT">
+            <Button fx:id="btnAddCar" onAction="#addOnClick" text="Add car"/>
+            <Button fx:id="btnDeleteCar" onAction="#deleteOnClick" text="Delete car"/>
+        </HBox>
+
+    </VBox>
+
+</HBox>
+
