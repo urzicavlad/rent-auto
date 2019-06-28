@@ -11,6 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import ro.ubbcluj.client.controller.Actions;
 import ro.ubbcluj.client.controller.common.AlertController;
 import ro.ubbcluj.service.model.Rent;
 import ro.ubbcluj.service.service.RentService;
@@ -19,32 +20,33 @@ import java.io.IOException;
 
 import static java.util.Objects.nonNull;
 
-public class RentController {
+public class RentController implements Actions {
 
     public TableView<Rent> tableViewRents;
-    public TableColumn<String, Long> tableColumnId;
-    public TableColumn<String, String> tableColumnCar;
-    public TableColumn<String, Long> tableColumnKilometers;
-    public TableColumn<String, Integer> tableColumnDays;
-    public Button btnDeleteRent;
-    public Button btnAddRent;
+    public TableColumn<Rent, Long> tableColumnId;
+    public TableColumn<Rent, String> tableColumnCar;
+    public TableColumn<Rent, Long> tableColumnKilometers;
+    public TableColumn<Rent, Integer> tableColumnDays;
+
+    public Button btnAdd;
+    public Button btnUndo;
+    public Button btnRedo;
+    public Button btnClear;
+    public Button btnDelete;
 
     private RentService rentService;
-
-    public void setServices(RentService rentService) {
-        this.rentService = rentService;
-    }
 
     private ObservableList<Rent> rents = FXCollections.observableArrayList();
 
     @FXML
-    private void initialize() {
+    public void initialize() {
         Platform.runLater(() -> {
             rents.addAll(rentService.getAll());
             tableViewRents.setItems(rents);
         });
     }
 
+    @Override
     public void addOnClick() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -67,6 +69,7 @@ public class RentController {
         }
     }
 
+    @Override
     public void deleteOnClick() {
         Rent rent = tableViewRents.getSelectionModel().getSelectedItem();
         if (nonNull(rent)) {
@@ -81,5 +84,23 @@ public class RentController {
         }
     }
 
+    @Override
+    public void undoOnClick() {
+
+    }
+
+    @Override
+    public void redoOnClick() {
+
+    }
+
+    @Override
+    public void clearOnClick() {
+
+    }
+
+    public void setServices(RentService rentService) {
+        this.rentService = rentService;
+    }
 
 }

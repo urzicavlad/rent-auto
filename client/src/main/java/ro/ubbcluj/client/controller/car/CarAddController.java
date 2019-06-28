@@ -13,9 +13,11 @@ public class CarAddController {
     public TextField model;
     public TextField kilometers;
     public TextField pricePerDay;
+
+    public Spinner id;
+
     public Button btnAdd;
     public Button btnCancel;
-    public Spinner id;
 
     private CarService carService;
 
@@ -24,7 +26,7 @@ public class CarAddController {
     }
 
     public void btnCancelClick() {
-        Stage stage = (Stage) btnCancel.getScene().getWindow();
+        Stage stage = (Stage) this.btnCancel.getScene().getWindow();
         stage.close();
     }
 
@@ -38,7 +40,7 @@ public class CarAddController {
             carService.add(car);
             btnCancelClick();
         } catch (RuntimeException rex) {
-            AlertController.showError("Error occured!", this.getClass().toString(), "btnAddClick");
+            AlertController.showError("Error occurred!", this.getClass().toString(), "btnAddClick");
             System.out.println("Exception occurred: {}" + rex.getMessage());
         }
     }

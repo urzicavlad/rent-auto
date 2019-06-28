@@ -11,6 +11,7 @@
     <modules>
         <module>client</module>
         <module>service</module>
+        <module>cli</module>
     </modules>
 
     <packaging>pom</packaging>

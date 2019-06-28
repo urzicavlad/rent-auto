@@ -3,6 +3,7 @@ package ro.ubbcluj.client.controller.home;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import ro.ubbcluj.client.controller.car.CarController;
@@ -22,6 +23,8 @@ public class HomeController {
 
     public Button btnCars;
     public Button btnRents;
+    public Button btnExit;
+
     private CarService carService;
 
     enum Type {RENT_VIEW, CARS_VIEW}
@@ -34,13 +37,17 @@ public class HomeController {
         goTo("/fx/rent/rent.fxml", Type.RENT_VIEW);
     }
 
+    public void exitOnClick(){
+        System.exit(0);
+    }
+
     private void goTo(String path, Type type) {
         carService = new CarServiceImpl(new CarRepositoryImpl());
         try {
             if (type.equals(Type.RENT_VIEW)) initRentScene(path);
             if (type.equals(Type.CARS_VIEW)) initCarScene(path);
         } catch (IOException e) {
-            AlertController.showError("Error occured!", e.getCause().getMessage(), e.getMessage());
+            AlertController.showError("Error occurred!", e.getCause().getMessage(), e.getMessage());
             System.out.println("Exception occurred: {}" + e.getMessage());
 
         }
@@ -65,7 +72,7 @@ public class HomeController {
 
     private Stage createStage(String path, FXMLLoader fxmlLoader) throws IOException {
         fxmlLoader.setLocation(getClass().getResource(path));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 300);
+        Scene scene = new Scene(fxmlLoader.load(), 800, 500);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setResizable(false);

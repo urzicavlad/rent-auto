@@ -10,10 +10,10 @@ import ro.ubbcluj.service.service.RentService;
 
 public class RentAddController {
 
-
     public TextField days;
     public TextField kilometers;
     public TextField carId;
+
     public Button btnAdd;
     public Button btnCancel;
     public Spinner id;
@@ -39,7 +39,7 @@ public class RentAddController {
             rentService.add(rent);
             btnCancelClick();
         } catch (RuntimeException rex) {
-            AlertController.showError("Error occured!", this.getClass().toString(), "btnAddClick");
+            AlertController.showError("Error occurred!", this.getClass().toString(), "btnAddClick");
             System.out.println("Exception occurred: {}" + rex.getMessage());
         }
     }

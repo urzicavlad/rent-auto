@@ -1,50 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<HBox xmlns:fx="http://javafx.com/fxml/1"
-      alignment="center"
-      xmlns="http://javafx.com/javafx/8.0.172-ea"
-      fx:controller="ro.ubbcluj.client.controller.rent.RentController">
+<?import javafx.geometry.Insets?>
+<HBox alignment="center" prefHeight="500.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ro.ubbcluj.client.controller.rent.RentController">
 
-    <VBox>
-        <Label text="Rents:"/>
+    <VBox prefHeight="500.0" prefWidth="600.0">
+        <Label prefHeight="45.0" prefWidth="110.0" text="Rents:">
+         <font>
+            <Font name="Impact" size="35.0" />
+         </font></Label>
 
         <TableView fx:id="tableViewRents" editable="true">
             <columns>
-                <TableColumn fx:id="tableColumnId" text="ID">
+                <TableColumn fx:id="tableColumnId" prefWidth="119.0" text="ID">
                     <cellValueFactory>
-                        <PropertyValueFactory property="id"/>
+                        <PropertyValueFactory property="id" />
                     </cellValueFactory>
                 </TableColumn>
 
-                <TableColumn fx:id="tableColumnCar" text="CAR IDENTIFIER">
+                <TableColumn fx:id="tableColumnCar" prefWidth="148.0" text="CAR IDENTIFIER">
                     <cellValueFactory>
-                        <PropertyValueFactory property="carId"/>
+                        <PropertyValueFactory property="carId" />
                     </cellValueFactory>
                 </TableColumn>
 
-                <TableColumn fx:id="tableColumnKilometers" text="KILOMETERS">
+                <TableColumn fx:id="tableColumnKilometers" prefWidth="173.0" text="KILOMETERS">
                     <cellValueFactory>
-                        <PropertyValueFactory property="kilometers"/>
+                        <PropertyValueFactory property="kilometers" />
                     </cellValueFactory>
                 </TableColumn>
 
-                <TableColumn fx:id="tableColumnDays" text="RENT DAYS">
+                <TableColumn fx:id="tableColumnDays" prefWidth="159.0" text="RENT DAYS">
                     <cellValueFactory>
-                        <PropertyValueFactory property="days"/>
+                        <PropertyValueFactory property="days" />
                     </cellValueFactory>
                 </TableColumn>
             </columns>
 
         </TableView>
 
-        <HBox alignment="BOTTOM_RIGHT">
-            <Button fx:id="btnAddRent" onAction="#addOnClick" text="Add rent"/>
-            <Button fx:id="btnDeleteRent" onAction="#deleteOnClick" text="Delete rent"/>
+        <HBox alignment="BOTTOM_RIGHT" prefHeight="70.0" prefWidth="600.0">
+            <Button fx:id="btnAdd" layoutX="239.0" layoutY="31.0" onAction="#addOnClick" prefHeight="35.0"
+                    prefWidth="75.0" text="Add">
+                <HBox.margin>
+                    <Insets bottom="15.0" right="38.0"/>
+                </HBox.margin>
+            </Button>
+            <Button fx:id="btnUndo" layoutX="239.0" layoutY="31.0" onAction="#undoOnClick" prefHeight="35.0"
+                    prefWidth="75.0" text="Undo">
+                <HBox.margin>
+                    <Insets bottom="15.0" right="38.0"/>
+                </HBox.margin>
+            </Button>
+            <Button fx:id="btnRedo" layoutX="239.0" layoutY="31.0" onAction="#redoOnClick" prefHeight="35.0"
+                    prefWidth="75.0" text="Redo">
+                <HBox.margin>
+                    <Insets bottom="15.0" right="38.0"/>
+                </HBox.margin>
+            </Button>
+            <Button fx:id="btnDelete" layoutX="389.0" layoutY="31.0" onAction="#deleteOnClick" prefHeight="35.0"
+                    prefWidth="75.0" text="Delete">
+                <HBox.margin>
+                    <Insets bottom="15.0" right="38.0"/>
+                </HBox.margin>
+            </Button>
+            <Button fx:id="btnClear" layoutX="389.0" layoutY="31.0" onAction="#clearOnClick" prefHeight="35.0"
+                    prefWidth="75.0" text="Clear">
+                <HBox.margin>
+                    <Insets bottom="15.0" right="38.0"/>
+                </HBox.margin>
+            </Button>
         </HBox>
 
     </VBox>

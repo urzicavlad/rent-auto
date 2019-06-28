@@ -1,14 +1,21 @@
-<?import javafx.scene.control.*?>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<VBox fx:controller="ro.ubbcluj.client.controller.car.CarAddController"
-      xmlns:fx="http://javafx.com/fxml"
-      alignment="center">
 
-    <Spinner fx:id="id" initialValue="0" editable="true" min="0" max="2000000000"/>
-    <TextField fx:id="model" promptText="MODEL"/>
-    <TextField fx:id="kilometers" promptText="KILOMETERS"/>
-    <TextField fx:id="pricePerDay" promptText="PRICE/DAY"/>
+<VBox alignment="center" prefHeight="283.0" prefWidth="462.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ro.ubbcluj.client.controller.car.CarAddController">
 
-    <Button text="Add" fx:id="btnAdd" onAction="#btnAddClick"/>
-    <Button text="Cancel" fx:id="btnCancel" onAction="#btnCancelClick"/>
+    <Spinner fx:id="id" editable="true" initialValue="0" max="2000000000" min="0" />
+    <TextField fx:id="model" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="210.0" promptText="MODEL" />
+    <TextField fx:id="kilometers" prefHeight="25.0" prefWidth="273.0" promptText="KILOMETERS" />
+    <TextField fx:id="pricePerDay" prefHeight="25.0" prefWidth="141.0" promptText="PRICE/DAY" />
+    <HBox maxWidth="-Infinity" prefHeight="107.0" prefWidth="432.0">
+        <Button fx:id="btnAdd" onAction="#btnAddClick" prefHeight="35.0" prefWidth="75.0" text="Add" translateX="120.0" translateY="30.0">
+        </Button>
+        <Button fx:id="btnCancel" onAction="#btnCancelClick" prefHeight="35.0" prefWidth="73.0" text="Cancel" translateX="120.0" translateY="30.0">
+        </Button>
+    </HBox>
 </VBox>

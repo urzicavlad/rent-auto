@@ -4,11 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import ro.ubbcluj.service.repository.CarRepositoryImpl;
-import ro.ubbcluj.service.service.CarService;
-import ro.ubbcluj.service.service.CarServiceImpl;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -19,22 +16,11 @@ public class App extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage primaryStage) throws IOException {
         FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/fx/home/home.fxml"));
-        Parent root = homeLoader.load();
-        stage.setTitle("Rent manager");
-        stage.setScene(new Scene(root, 600, 400));
-        stage.show();
-        stage.setTitle("JavaFX on JDK 11");
-
-//        CarService carService = new CarServiceImpl(new CarRepositoryImpl());
-
-//        Label label = new Label("The Cool Logic Output is: "+ "carService.getAllCarsByRentTime()");
-//
-//        Scene scene = new Scene(label, 400, 200);
-//
-//        stage.setScene(scene);
-//        stage.show();
-
+        primaryStage.initStyle(StageStyle.UNDECORATED);
+        final var scene = new Scene(homeLoader.load(), 600, 200);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }
