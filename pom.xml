@@ -20,12 +20,12 @@
             <email>urzica.vlad@yahoo.com</email>
         </developer>
     </developers>
-    
+
     <scm>
         <connection>scm:git:git@github.com:urzicavlad/rent-auto.git</connection>
         <developerConnection>scm:git:git@github.com:urzicavlad/rent-auto.git</developerConnection>
         <url>http://github.com/urzicavlad/rent-auto</url>
-        <tag>${version}</tag>
+        <tag>${project.version}</tag>
     </scm>
 
     <modules>
