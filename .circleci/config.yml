@@ -39,3 +39,6 @@ jobs:
 
       # run tests!
       - run: mvn clean install
+
+      - store_test_results:
+          path: test-results
