@@ -55,13 +55,17 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
+* [Java-11 JDK-11.0.1](http://www.spring.io/) - The IoC and DI framework
 * [Spring](http://www.spring.io/) - The IoC and DI framework
 * [Maven](https://maven.apache.org/) - Dependency Management
-* [JavaRx](https://openjfx.io/) - Used to generate the simple UI
+* [JavaFx](https://openjfx.io/) - Used to generate the simple UI
+* [Jackson](https://github.com/FasterXML/jackson) - Used for standard JSON library
+* [Mockito](https://site.mockito.org/) - Framework for unit tests in Java
+* [Junit4](https://junit.org/junit4/) - A simple framework to write repeatable tests.
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/urzicavlad/rent-auto/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
