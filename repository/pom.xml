@@ -18,7 +18,6 @@
             <groupId>ro.ubbcluj</groupId>
             <artifactId>common</artifactId>
             <version>${parent.version}</version>
-            <scope>compile</scope>
         </dependency>
 
         <!-- SPRING CONTEXT -->
