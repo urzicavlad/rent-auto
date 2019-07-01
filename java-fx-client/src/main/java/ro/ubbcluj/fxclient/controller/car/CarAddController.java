@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.springframework.stereotype.Controller;
-import ro.ubbcluj.fxclient.controller.common.AlertController;
+import ro.ubbcluj.fxclient.controller.common.AlertsAndInfos;
 import ro.ubbcluj.common.model.Car;
 import ro.ubbcluj.service.service.CarService;
 
@@ -45,8 +45,6 @@ public class CarAddController {
             carService.add(car);
             btnCancelClick();
         } catch (RuntimeException rex) {
-            AlertController.showError("Error occurred!", this.getClass().toString(), "btnAddClick");
-            System.out.println("Exception occurred: {}" + rex.getMessage());
-        }
+            AlertsAndInfos.showError("Error occurred! ", this.getClass().toString(), "btnAddClick"); }
     }
 }

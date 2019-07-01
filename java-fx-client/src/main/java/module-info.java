@@ -24,5 +24,6 @@ module rent.auto.javafx.client {
     exports ro.ubbcluj.fxclient.controller.car;
     exports ro.ubbcluj.fxclient.controller.rent;
     exports ro.ubbcluj.fxclient.controller.common;
+    exports ro.ubbcluj.fxclient.util;
 
 }

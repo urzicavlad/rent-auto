@@ -11,19 +11,22 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
-import ro.ubbcluj.fxclient.controller.Actions;
-import ro.ubbcluj.fxclient.controller.common.AlertController;
+import ro.ubbcluj.fxclient.controller.DefaultActions;
+import ro.ubbcluj.fxclient.controller.common.AlertsAndInfos;
 import ro.ubbcluj.common.model.Rent;
+import ro.ubbcluj.fxclient.util.StageBuilder;
 import ro.ubbcluj.service.service.RentService;
 
 import java.io.IOException;
 
 import static java.util.Objects.nonNull;
+import static ro.ubbcluj.fxclient.util.Views.ADD_CAR_VIEW;
 
 @Controller
-public class RentController implements Actions {
+public class RentController implements DefaultActions {
 
     @FXML
     private TableView<Rent> tableViewRents;
@@ -46,16 +49,18 @@ public class RentController implements Actions {
     private Button btnClear;
     @FXML
     private Button btnDelete;
+    @FXML
+    private Button btnCancel;
 
     private final RentService rentService;
 
-    private final ApplicationContext applicationContext;
-
     private ObservableList<Rent> rents = FXCollections.observableArrayList();
 
-    public RentController(RentService rentService, ApplicationContext applicationContext) {
+    private final StageBuilder stageBuilder;
+
+    public RentController(RentService rentService, StageBuilder stageBuilder) {
         this.rentService = rentService;
-        this.applicationContext = applicationContext;
+        this.stageBuilder = stageBuilder;
     }
 
     @FXML
@@ -69,22 +74,15 @@ public class RentController implements Actions {
     @Override
     public void addOnClick() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/fx/rent/rent-add.fxml"));
-            fxmlLoader.setControllerFactory(applicationContext::getBean);
-
-            Scene scene = new Scene(fxmlLoader.load(), 600, 300);
-            Stage stage = new Stage();
-
-            stage.setTitle("Rent add");
-            stage.setScene(scene);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.showAndWait();
+            this.stageBuilder.withView(ADD_CAR_VIEW)
+                    .withWidth(500d)
+                    .withHeight(300d)
+                    .build()
+                    .showAndWait();
             rents.clear();
             rents.addAll(rentService.getAll());
         } catch (IOException e) {
-            AlertController.showError("Error occured!", e.getCause().getMessage(), e.getMessage());
-            System.out.println("Exception occurred: {}" + e.getMessage());
+            AlertsAndInfos.showError("Error occurred!", e.getCause().getMessage(), e.getMessage());
         }
     }
 
@@ -97,8 +95,7 @@ public class RentController implements Actions {
                 rents.clear();
                 rents.addAll(rentService.getAll());
             } catch (RuntimeException rex) {
-                System.out.println("Exception occurred: {}" + rex.getMessage());
-                AlertController.showError("Error occured!", rex.getCause().getMessage(), rex.getMessage());
+                AlertsAndInfos.showError("Error occured!", rex.getCause().getMessage(), rex.getMessage());
             }
         }
     }
@@ -118,4 +115,9 @@ public class RentController implements Actions {
 
     }
 
+    @Override
+    public void cancel() {
+        Stage stage = (Stage) this.btnCancel.getScene().getWindow();
+        stage.close();
+    }
 }

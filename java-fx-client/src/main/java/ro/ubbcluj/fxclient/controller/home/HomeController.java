@@ -2,16 +2,16 @@ package ro.ubbcluj.fxclient.controller.home;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
-import ro.ubbcluj.fxclient.controller.common.AlertController;
+import ro.ubbcluj.fxclient.util.Views;
+import ro.ubbcluj.fxclient.controller.common.AlertsAndInfos;
+import ro.ubbcluj.fxclient.util.StageBuilder;
 
 import java.io.IOException;
+
+import static ro.ubbcluj.fxclient.util.Views.CARS_VIEW;
+import static ro.ubbcluj.fxclient.util.Views.RENTS_VIEW;
 
 
 @Controller
@@ -24,49 +24,36 @@ public class HomeController {
     @FXML
     private Button btnExit;
 
-    private final ApplicationContext applicationContext;
+    private final StageBuilder stageBuilder;
 
-    public HomeController(ApplicationContext applicationContext) {
-        this.applicationContext = applicationContext;
+    public HomeController(StageBuilder stageBuilder) {
+        this.stageBuilder = stageBuilder;
     }
 
+
     public void goToCarsOnClick() {
-        goTo("/fx/car/car.fxml");
+        initialize(CARS_VIEW);
     }
 
     public void goToRentsOnClick() {
-        goTo("/fx/rent/rent.fxml");
+        initialize(RENTS_VIEW);
     }
 
     public void exitOnClick() {
         Platform.exit();
     }
 
-    private void goTo(String path) {
+    private void initialize(Views view) {
         try {
-            initScene(path);
-        } catch (IOException e) {
-            AlertController.showError("Error occurred!", e.getCause().getMessage(), e.getMessage());
-            System.out.println("Exception occurred: {}" + e.getMessage());
-
+            this.stageBuilder.withView(view)
+                    .withWidth(800d)
+                    .withHeight(500d)
+                    .build()
+                    .showAndWait();
+        } catch (IOException ioe) {
+            AlertsAndInfos.showError("Error occurred! ",
+                    ioe.getCause().getMessage(), ioe.getMessage());
         }
     }
 
-    private void initScene(String path) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        final var stage = createStage(path, fxmlLoader);
-        stage.showAndWait();
-    }
-
-
-    private Stage createStage(String path, FXMLLoader fxmlLoader) throws IOException {
-        fxmlLoader.setLocation(getClass().getResource(path));
-        fxmlLoader.setControllerFactory(applicationContext::getBean);
-        Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        return stage;
-    }
 }

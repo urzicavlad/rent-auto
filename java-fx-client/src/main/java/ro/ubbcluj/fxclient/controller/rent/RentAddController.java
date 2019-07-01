@@ -6,7 +6,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.springframework.stereotype.Controller;
-import ro.ubbcluj.fxclient.controller.common.AlertController;
+import ro.ubbcluj.fxclient.controller.common.AlertsAndInfos;
 import ro.ubbcluj.common.model.Rent;
 import ro.ubbcluj.service.service.RentService;
 
@@ -24,8 +24,7 @@ public class RentAddController {
     private Button btnAdd;
     @FXML
     private Button btnCancel;
-    @FXML
-    private Spinner id;
+
 
     private final RentService rentService;
 
@@ -42,15 +41,13 @@ public class RentAddController {
     public void btnAddClick() {
         try {
             Rent rent = new Rent();
-            rent.setId(Long.valueOf((Integer) id.getValue()));
             rent.setCarId(Long.valueOf(carId.getText()));
             rent.setDays(Integer.valueOf(days.getText()));
             rent.setKilometers(Integer.valueOf(kilometers.getText()));
             rentService.add(rent);
             btnCancelClick();
         } catch (RuntimeException rex) {
-            AlertController.showError("Error occurred!", this.getClass().toString(), "btnAddClick");
-            System.out.println("Exception occurred: {}" + rex.getMessage());
+            AlertsAndInfos.showError("Error occurred!", this.getClass().toString(), "btnAddClick");
         }
     }
 }

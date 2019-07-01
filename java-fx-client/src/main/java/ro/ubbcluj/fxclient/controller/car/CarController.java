@@ -4,29 +4,27 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.converter.DoubleStringConverter;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
-import ro.ubbcluj.fxclient.controller.Actions;
-import ro.ubbcluj.fxclient.controller.common.AlertController;
 import ro.ubbcluj.common.model.Car;
+import ro.ubbcluj.fxclient.controller.DefaultActions;
+import ro.ubbcluj.fxclient.controller.common.AlertsAndInfos;
+import ro.ubbcluj.fxclient.util.StageBuilder;
 import ro.ubbcluj.service.service.CarService;
 
 import java.io.IOException;
 
 import static java.util.Objects.nonNull;
+import static ro.ubbcluj.fxclient.util.Views.ADD_CAR_VIEW;
 
 
 @Controller
-public class CarController implements Actions {
+public class CarController implements DefaultActions {
 
     @FXML
     private TableView<Car> tableViewCars;
@@ -51,16 +49,19 @@ public class CarController implements Actions {
     private Button btnClear;
     @FXML
     private Button btnDelete;
+    @FXML
+    private Button btnCancel;
+
 
     private final CarService carService;
 
-    private final ApplicationContext applicationContext;
+    private final StageBuilder stageBuilder;
 
     private ObservableList<Car> cars = FXCollections.observableArrayList();
 
-    public CarController(CarService carService, ApplicationContext applicationContext) {
+    public CarController(CarService carService, StageBuilder stageBuilder) {
         this.carService = carService;
-        this.applicationContext = applicationContext;
+        this.stageBuilder = stageBuilder;
     }
 
     @FXML
@@ -76,21 +77,15 @@ public class CarController implements Actions {
     @Override
     public void addOnClick() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/fx/car/car-add.fxml"));
-            fxmlLoader.setControllerFactory(applicationContext::getBean);
-
-            Scene scene = new Scene(fxmlLoader.load(), 400, 200);
-            Stage stage = new Stage();
-
-            stage.setTitle("Car add");
-            stage.setScene(scene);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.showAndWait();
+            this.stageBuilder.withView(ADD_CAR_VIEW)
+                    .withWidth(500d)
+                    .withHeight(300d)
+                    .build()
+                    .showAndWait();
             cars.clear();
             cars.addAll(carService.getAllCarsByRentTime());
         } catch (IOException e) {
-            AlertController.showError("Error occurred! ", e.getCause().getMessage(), e.getMessage());
+            AlertsAndInfos.showError("Error occurred! ", e.getCause().getMessage(), e.getMessage());
             System.out.println("Exception occurred: " + e.getMessage());
         }
     }
@@ -104,8 +99,7 @@ public class CarController implements Actions {
                 cars.clear();
                 cars.addAll(carService.getAllCarsByRentTime());
             } catch (RuntimeException rex) {
-                System.out.println("Exception occurred: {}" + rex.getMessage());
-                AlertController.showError("Error occurred!", rex.getCause().getMessage(), rex.getMessage());
+                AlertsAndInfos.showError("Error occurred!", rex.getCause().getMessage(), rex.getMessage());
             }
         }
     }
@@ -125,4 +119,9 @@ public class CarController implements Actions {
 
     }
 
+    @Override
+    public void cancel() {
+        Stage stage = (Stage) this.btnCancel.getScene().getWindow();
+        stage.close();
+    }
 }

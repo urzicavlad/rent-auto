@@ -1,6 +1,6 @@
 package ro.ubbcluj.fxclient.controller;
 
-public interface Actions {
+public interface DefaultActions {
 
     void addOnClick();
 
@@ -11,5 +11,7 @@ public interface Actions {
     void clearOnClick();
 
     void deleteOnClick();
+
+    void cancel();
 
 }

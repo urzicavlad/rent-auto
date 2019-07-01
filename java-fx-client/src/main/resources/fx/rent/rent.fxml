@@ -78,6 +78,8 @@
                     <Insets bottom="15.0" right="38.0"/>
                 </HBox.margin>
             </Button>
+            <Button fx:id="btnCancel" onAction="#cancel" prefHeight="35.0" prefWidth="73.0" text="Cancel" translateX="2.0" translateY="-15.0">
+            </Button>
         </HBox>
 
     </VBox>

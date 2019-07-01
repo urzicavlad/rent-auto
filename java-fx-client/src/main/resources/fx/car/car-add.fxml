@@ -1,21 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<VBox alignment="center" prefHeight="283.0" prefWidth="462.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="ro.ubbcluj.fxclient.controller.car.CarAddController">
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<VBox alignment="center" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #6622CC"
+      xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ro.ubbcluj.fxclient.controller.car.CarAddController">
+    <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="350.0" translateX="10.0"
+          translateY="25.0">
+        <Label prefHeight="24.0" prefWidth="65.0" text="Model" textFill="WHITE" translateX="10.0" translateY="25.0">
+            <font>
+                <Font name="Impact" size="14.0"/>
+            </font>
+        </Label>
 
-    <TextField fx:id="model" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-               prefHeight="25.0" prefWidth="210.0" promptText="MODEL"/>
-    <TextField fx:id="kilometers" prefHeight="25.0" prefWidth="273.0" promptText="KILOMETERS"/>
-    <TextField fx:id="pricePerDay" prefHeight="25.0" prefWidth="141.0" promptText="PRICE/DAY"/>
+        <TextField fx:id="model" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                   prefHeight="25.0" prefWidth="245.0" promptText="MODEL" translateX="10.0" translateY="25.0"/>
+    </HBox>
+    <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="350.0" translateX="10.0"
+          translateY="25.0">
+        <Label prefHeight="24.0" prefWidth="66.0" text="Kilometers" textFill="WHITE" translateX="10.0"
+               translateY="25.0">
+            <font>
+                <Font name="Impact" size="14.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="kilometers" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                   minWidth="-Infinity" prefHeight="25.0" prefWidth="245.0" promptText="KILOMETERS" translateX="10.0"
+                   translateY="25.0"/>
+    </HBox>
+    <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="350.0" translateX="10.0"
+          translateY="25.0">
+        <Label maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="24.0" prefWidth="65.0" text="Price/Day"
+               textFill="WHITE" translateX="10.0" translateY="25.0">
+            <font>
+                <Font name="Impact" size="14.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="pricePerDay" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="245.0"
+                   promptText="PRICE/DAY" translateX="10.0" translateY="25.0"/>
+    </HBox>
     <HBox maxWidth="-Infinity" prefHeight="107.0" prefWidth="432.0">
         <Button fx:id="btnAdd" onAction="#btnAddClick" prefHeight="35.0" prefWidth="75.0" text="Add" translateX="120.0"
-                translateY="30.0">
+                translateY="50.0">
         </Button>
         <Button fx:id="btnCancel" onAction="#btnCancelClick" prefHeight="35.0" prefWidth="73.0" text="Cancel"
-                translateX="120.0" translateY="30.0">
+                translateX="160.0" translateY="50.0">
         </Button>
     </HBox>
 </VBox>
