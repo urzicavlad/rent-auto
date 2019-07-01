@@ -1,12 +1,13 @@
 module rent.auto.service {
 
-    requires com.fasterxml.jackson.databind;
-    requires com.fasterxml.jackson.core;
 
+    requires rent.auto.repository;
+    requires rent.auto.common;
+    requires spring.context;
+    requires spring.beans;
+
+    opens ro.ubbcluj.service.service to spring.core;
 
     exports ro.ubbcluj.service.service;
-    exports ro.ubbcluj.service.model;
-    exports ro.ubbcluj.service.repository;
-    exports ro.ubbcluj.service.util;
 
 }

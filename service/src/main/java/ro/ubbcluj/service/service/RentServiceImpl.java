@@ -1,16 +1,19 @@
 package ro.ubbcluj.service.service;
 
-import ro.ubbcluj.service.model.Rent;
-import ro.ubbcluj.service.repository.Repository;
+import org.springframework.stereotype.Service;
+import ro.ubbcluj.common.model.Rent;
+import ro.ubbcluj.inmemory.AbstractRepository;
 
 import java.util.List;
 
+
+@Service
 public class RentServiceImpl implements RentService {
 
-    private final Repository<Rent, Long> rentRepository;
+    private final AbstractRepository<Rent, Long> rentRepository;
     private final CarService carService;
 
-    public RentServiceImpl(Repository<Rent, Long> rentRepository, CarService carService) {
+    public RentServiceImpl(AbstractRepository<Rent, Long> rentRepository, CarService carService) {
         this.rentRepository = rentRepository;
         this.carService = carService;
     }

@@ -1,20 +1,23 @@
 package ro.ubbcluj.service.service;
 
+import org.springframework.stereotype.Service;
+import ro.ubbcluj.common.model.Car;
+import ro.ubbcluj.inmemory.AbstractRepository;
 import ro.ubbcluj.service.exception.CarNotFoundException;
-import ro.ubbcluj.service.model.Car;
-import ro.ubbcluj.service.repository.Repository;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class CarServiceImpl implements CarService {
 
-    private final Repository<Car, Long> carRepository;
+    private final AbstractRepository<Car, Long> carRepository;
 
-    public CarServiceImpl(Repository<Car, Long> carRepository) {
+    public CarServiceImpl(AbstractRepository<Car, Long> carRepository) {
         this.carRepository = carRepository;
     }
+
 
     @Override
     public Car add(Car car) {

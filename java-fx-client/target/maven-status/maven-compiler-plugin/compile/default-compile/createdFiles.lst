@@ -1,0 +1,9 @@
+ro\ubbcluj\fxclient\controller\car\CarController.class
+ro\ubbcluj\fxclient\controller\home\HomeController.class
+ro\ubbcluj\fxclient\controller\rent\RentAddController.class
+ro\ubbcluj\fxclient\controller\rent\RentController.class
+module-info.class
+ro\ubbcluj\fxclient\App.class
+ro\ubbcluj\fxclient\controller\Actions.class
+ro\ubbcluj\fxclient\controller\common\AlertController.class
+ro\ubbcluj\fxclient\controller\car\CarAddController.class

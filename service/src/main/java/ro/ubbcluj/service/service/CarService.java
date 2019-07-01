@@ -1,6 +1,6 @@
 package ro.ubbcluj.service.service;
 
-import ro.ubbcluj.service.model.Car;
+import ro.ubbcluj.common.model.Car;
 
 import java.util.List;
 

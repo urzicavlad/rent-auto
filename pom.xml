@@ -9,12 +9,76 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>client</module>
+        <module>java-fx-client</module>
         <module>service</module>
+        <module>repository</module>
+        <module>common</module>
         <module>cli</module>
     </modules>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <junit.version>4.12</junit.version>
+        <jackson.version>2.9.8</jackson.version>
+        <mockito-all.version>1.9.5</mockito-all.version>
+    </properties>
+
     <packaging>pom</packaging>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- MOCKITO -->
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>${mockito-all.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- JUNIT -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- SPRING CONTEXT -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>5.1.8.RELEASE</version>
+            </dependency>
+
+            <!-- SPRING BEANS -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>5.1.8.RELEASE</version>
+            </dependency>
+
+            <!-- JACKSON DATABIND -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <!-- JACKSON CORE -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <!-- JACKSON ANNOTATIONS -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>

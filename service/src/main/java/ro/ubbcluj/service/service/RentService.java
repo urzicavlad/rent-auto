@@ -1,6 +1,6 @@
 package ro.ubbcluj.service.service;
 
-import ro.ubbcluj.service.model.Rent;
+import ro.ubbcluj.common.model.Rent;
 
 import java.util.List;
 
