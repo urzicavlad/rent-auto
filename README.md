@@ -1,5 +1,7 @@
 # Rent-Auto
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a4410639df614e21bdb25f1c535cbb85)](https://app.codacy.com/app/urzica.vlad/rent-auto?utm_source=github.com&utm_medium=referral&utm_content=urzicavlad/rent-auto&utm_campaign=Badge_Grade_Dashboard)
+
 This is a simple project witch reflect a Rent Car application.
 
 ## Getting Started
