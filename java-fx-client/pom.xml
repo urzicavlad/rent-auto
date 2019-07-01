@@ -13,6 +13,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <javafx.version>13-ea+9</javafx.version>
     </properties>
 
     <dependencies>
@@ -20,14 +21,14 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>11-ea+19</version>
+            <version>${javafx.version}</version>
         </dependency>
 
         <!-- JAVA FX FXML -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>13-ea+9</version>
+            <version>${javafx.version}</version>
         </dependency>
 
         <!-- RENT-ATUO SERVICE -->
