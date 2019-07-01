@@ -1,19 +1,80 @@
-# examen-practic
-Examen Practic
+# Rent-Auto
 
-java --module-path C:\Users\admin\IdeaProjects\rentauto\lib\javafx-sdk-11.0.2\lib --add-modules javafx.controls,javafx.fxml --add-modules javafx.base,javafx.graphics -classpath C:\Users\admin\IdeaProjects\rentauto\target\classes App
-java -jar --module-path C:\Users\admin\IdeaProjects\rentauto\lib\javafx-sdk-11.0.2\lib --add-modules javafx.controls,javafx.fxml --add-modules javafx.base,javafx.graphics rent-auto-1.0-SNAPSHOT.jar
+This is a simple project witch reflect a Rent Car application.
 
-mvn clean install & java --module-path client\target\client-1.0-SNAPSHOT.jar;service\target\service-1.0-SNAPSHOT.jar;"C:\Users\cristian.urzica\.m2\repository\org\openjfx\javafx-base\11-ea+19\javafx-base-11-ea+19-win.jar";"C:\Users\cristian.urizca\.m2\repository\org\openjfx\javafx-graphics\11-ea+19\javafx-graphics-11-ea+19-win.jar";"C:\Users\cristian.urzica\.m2\repository\org\openjfx\javafx-controls\11-ea+19\javafx-controls-11-ea+19-win.jar";"C:\Users\cristian.urzica\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.9.8\jackson-databind-2.9.8.jar";"C:\Users\cristian.urzica\.m2\repository\org\openjfx\javafx-graphics\11-ea+19\javafx-graphics-11-ea+19-win.jar";"C:\Users\cristian.urzica\.m2\repository\org\openjfx\javafx-fxml\13-ea+9\javafx-fxml-13-ea+9-win.jar";"C:\Users\cristian.urzica\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.9.8\jackson-core-2.9.8.jar";"C:\Users\cristian.urzica\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.9.0\jackson-annotations-2.9.0.jar" -m rent.auto.client/ro.ubbcluj.fxclient.App
+## Getting Started
 
---module-path client\target\client-1.0-SNAPSHOT.jar;service\target\service-1.0-SNAPSHOT.jar;"C:\Users\cristian.urzica\.m2\repository\org\openjfx\javafx-base\11-ea+19\javafx-base-11-ea+19-win.jar";"C:\Users\cristian.urizca\.m2\repository\org\openjfx\javafx-graphics\11-ea+19\javafx-graphics-11-ea+19-win.jar";"C:\Users\cristian.urzica\.m2\repository\org\openjfx\javafx-controls\11-ea+19\javafx-controls-11-ea+19-win.jar";"C:\Users\cristian.urzica\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.9.8\jackson-databind-2.9.8.jar";"C:\Users\cristian.urzica\.m2\repository\org\openjfx\javafx-graphics\11-ea+19\javafx-graphics-11-ea+19-win.jar";"C:\Users\cristian.urzica\.m2\repository\org\openjfx\javafx-fxml\13-ea+9\javafx-fxml-13-ea+9-win.jar";"C:\Users\cristian.urzica\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.9.8\jackson-core-2.9.8.jar";"C:\Users\cristian.urzica\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.9.0\jackson-annotations-2.9.0.jar" -m rent.auto.client/ro.ubbcluj.fxclient.App
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+### Prerequisites
 
+What things you need to install the software and how to install them
 
+```
+STILL YOU DONT NEED PREREQUSITES
+```
 
-_________________
+### Installing
 
---module-path
-cli\target\cli-1.0-SNAPSHOT.jar;common\target\common-1.0-SNAPSHOT.jar;repository\target\repository-1.0-SNAPSHOT.jar;client\target\client-1.0-SNAPSHOT.jar;service\target\service-1.0-SNAPSHOT.jar;"C:\Users\cristian.urzica\.m2\repository\org\openjfx\javafx-base\11-ea+19\javafx-base-11-ea+19-win.jar";"C:\Users\cristian.urizca\.m2\repository\org\openjfx\javafx-graphics\11-ea+19\javafx-graphics-11-ea+19-win.jar";"C:\Users\cristian.urzica\.m2\repository\org\openjfx\javafx-controls\11-ea+19\javafx-controls-11-ea+19-win.jar";"C:\Users\cristian.urzica\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.9.8\jackson-databind-2.9.8.jar";"C:\Users\cristian.urzica\.m2\repository\org\openjfx\javafx-graphics\11-ea+19\javafx-graphics-11-ea+19-win.jar";"C:\Users\cristian.urzica\.m2\repository\org\openjfx\javafx-fxml\13-ea+9\javafx-fxml-13-ea+9-win.jar";"C:\Users\cristian.urzica\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.9.8\jackson-core-2.9.8.jar";"C:\Users\cristian.urzica\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.9.0\jackson-annotations-2.9.0.jar";"C:\Users\cristian.urzica\.m2\repository\org\springframework\spring-beans\5.1.8.RELEASE\spring-beans-5.1.8.RELEASE.jar";"C:\Users\cristian.urzica\.m2\repository\org\springframework\spring-context\5.1.8.RELEASE\spring-context-5.1.8.RELEASE.jar"
--m
-rent.auto.client/ro.ubbcluj.fxclient.App
+A step by step series of examples that tell you how to get a development env running
+
+Say what the step will be
+
+```
+run the run.bat script.
+```
+
+End with an example of getting some data out of the system or using it for a little demo
+
+## Running the tests
+
+Explain how to run the automated tests for this system
+
+### Break down into end to end tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
+## Built With
+
+* [Spring](http://www.spring.io/) - The IoC and DI framework
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [JavaRx](https://openjfx.io/) - Used to generate the simple UI
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/urzicavlad/rent-auto/tags). 
+
+## Authors
+
+* **Urzica Vlad** - *Initial work* - [urzicavlad@github](https://github.com/urzicavlad/)
+
+See also the list of [contributors](https://github.com/urzicavlad/rent-auto/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone whose code was used
+* Inspiration
