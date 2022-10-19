@@ -40,7 +40,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>4.12</junit.version>
-        <jackson.version>2.9.9</jackson.version>
+        <jackson.version>2.13.4.1</jackson.version>
         <mockito-all.version>1.9.5</mockito-all.version>
         <spring.version>5.1.8.RELEASE</spring.version>
     </properties>
